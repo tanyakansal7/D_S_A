@@ -1,0 +1,19 @@
+//https://www.codingninjas.com/codestudio/problems/1089580?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+
+
+
+vector<vector<long long int>> printPascal(int n) 
+{ 
+    vector<vector<long long int>>v(n);
+    for(long long int i=0;i<n;i++){
+        v[i].resize(i+1);
+        v[i][0]=v[i][i]=1;
+        for(long long int j=1;j<i;j++){
+          
+          
+                v[i][j]=v[i-1][j-1]+v[i-1][j];
+            
+        }
+    }return v;
+  // Write your code here.
+}
