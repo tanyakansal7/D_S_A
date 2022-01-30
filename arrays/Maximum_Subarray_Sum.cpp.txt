@@ -1,0 +1,15 @@
+//https://www.codingninjas.com/codestudio/problems/630526?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+
+
+long long maxSubarraySum(int arr[], int n)
+{
+    long long sum=0;
+        long long maxi=arr[0];
+        for(long long i=0;i<n;i++){
+            sum+=arr[i];
+            if(sum<0) sum=0;
+            maxi=max(sum,maxi);
+            
+        }return maxi;
+    
+}
