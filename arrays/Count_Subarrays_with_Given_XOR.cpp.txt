@@ -1,0 +1,22 @@
+//https://www.codingninjas.com/codestudio/problems/1115652?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int subarraysXor(vector<int> &arr, int x)
+{map<int,int>freq;
+ int xorr=0;
+ int cnt=0;
+ for(auto it:arr){
+     xorr=xorr^it;
+     if(xorr==x)
+         cnt++;
+     if(freq.find(xorr^x)!=freq.end())
+         cnt+=freq[xorr^x];
+     freq[xorr]+=1;
+ }return cnt;
+ 
+        
+    //    Write your code here.
+}
