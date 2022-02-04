@@ -7,5 +7,7 @@ ListNode* reverseList(ListNode* head) {
             head->next=newnode;
             newnode=head;
             head=next;
+
+
         }return newnode;
     }
