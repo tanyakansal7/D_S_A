@@ -18,5 +18,5 @@ int subarraysXor(vector<int> &arr, int x)
  }return cnt;
  
         
-    //    Write your code here.
+  
 }
