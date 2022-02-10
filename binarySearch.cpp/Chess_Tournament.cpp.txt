@@ -1,0 +1,28 @@
+//https://www.codingninjas.com/codestudio/problems/chess-tournament_981299?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
+
+
+bool canPlace(int mid,vector<int>&pos,int n,int c){
+    int co=pos[0],cnt=1;
+    for(int i=1;i<n;i++){
+      if((pos[i]-co)>=mid){
+          cnt++;
+          co=pos[i];
+      }
+        if(cnt==c) return true;
+    }return false;
+}
+
+int chessTournament(vector<int> positions , int n ,  int c){
+	sort(positions.begin(),positions.end());
+    int low=1,high=positions[n-1]-positions[0];
+    int res;
+    while(low<=high){
+        int mid=(low+high)>>1;
+        if(canPlace(mid,positions,n,c))
+           { res=mid;
+           low=mid+1;
+           }else
+            high=mid-1;
+    }return res;
+    // Write your code here
+}
