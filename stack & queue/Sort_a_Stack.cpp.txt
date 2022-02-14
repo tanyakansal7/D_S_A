@@ -1,0 +1,27 @@
+//https://www.codingninjas.com/codestudio/problems/sort-a-stack_985275?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
+
+
+
+void insert(int x,stack<int>&s){
+if(s.size()==0||s.top()<x)
+    s.push(x);
+ else{
+    int a=s.top();
+    s.pop();
+    insert(x,s);
+    s.push(a);
+}
+}
+void reverse(stack<int>&s){
+if(s.size()>0){
+   int x=s.top();
+  s.pop();
+    reverse(s);
+    insert(x,s);
+}
+}
+void sortStack(stack<int> &stack)
+{
+    reverse(stack);
+	// Write your code here
+}
