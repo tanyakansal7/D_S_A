@@ -1,0 +1,31 @@
+//https://leetcode.com/problems/online-stock-span/submissions/
+
+
+class StockSpanner {
+public
+
+stack pairint,int st ; 
+int count  ; 
+StockSpanner() {
+    count = 0 ;
+}
+
+int next(int price) {
+    
+    count++ ; 
+    
+    while(!st.empty() && st.top().first = price){
+        st.pop() ; 
+    }
+    if(st.empty()){
+        st.push(make_pair(price , count)) ; 
+        return count; 
+    }
+    else{
+        int x = st.top().second ; 
+        st.push(make_pair(price , count)) ; 
+        return (count-x) ;
+    }
+ 
+}
+};
