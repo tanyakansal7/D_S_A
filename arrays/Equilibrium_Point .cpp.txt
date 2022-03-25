@@ -1,0 +1,26 @@
+//https://practice.geeksforgeeks.org/problems/equilibrium-point-1587115620/1
+
+
+int equilibriumPoint(long long a[], int n) {
+    
+    long total=0;
+    long leftsum=0;
+    long rightsum=0;
+    long cursum=0;
+    int index=0;
+    for(long i=0;i<n;i++){
+        total=total+a[i];
+    }
+    for(long i=0;i<n;i++){
+        cursum=cursum+a[i];
+        leftsum=cursum-a[i];
+        rightsum=total-cursum;
+        if(leftsum==rightsum)
+        return index+1;
+        index+=1;
+    }
+    return -1;
+        // Your code here
+    }
+
+
