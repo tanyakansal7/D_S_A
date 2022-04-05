@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/is-graph-bipartite/submissions/
+
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+         int n = graph.size();
+    vector<int> vis(n,0);
+        for(int i=0;i<n;i++){
+            if(vis[i]==1||vis[i]==-1)
+                continue;
+            queue<int>q;
+            vis[i]=1;
+            q.push(i);
+            while(!q.empty()){
+                int node=q.front();
+                q.pop();
+                for(auto adj:graph[node]){
+                    if(vis[adj]==0){
+                        vis[adj]=-vis[node];
+                        q.push(adj);
+                    }
+                    if(vis[adj]==vis[node]) return false;
+                }
+                
+            }
+        }return true;
+    }
+};
