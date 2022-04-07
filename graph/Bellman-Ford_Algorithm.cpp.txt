@@ -1,0 +1,13 @@
+//https://practice.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/0/?fbclid=IwAR2_lL0T84DnciLyzMTQuVTMBOi82nTWNLuXjUgahnrtBgkphKiYk6xcyJU
+
+vector <int> bellman_ford(int N, vector<vector<int>> adj, int source) {
+        // Code here
+         vector<int> distance(N,100000000),empty;
+   distance[source]=0;
+   for(int i=1;i<=N-1;i++)
+        for(auto itr:adj)  
+        if(distance[itr[0]]+itr[2]<distance[itr[1]])
+        distance[itr[1]]=distance[itr[0]]+itr[2];
+         for(auto itr:adj) if(distance[itr[0]]+itr[2]<distance[itr[1]]) return empty;
+       return distance;
+    }
