@@ -1,0 +1,40 @@
+//https://leetcode.com/problems/zigzag-conversion/submissions/
+
+
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        string ans;
+        if(numRows==1 || numRows>=s.length())
+            return s;
+        else{
+            int i=0,a=((numRows-1)*2)-2,b=2;
+            for(i=0;i<numRows;i++){
+                int c=i,d=0;
+                if((i==0)||(i==(numRows-1))){
+                    while(c<s.length()){
+                        ans.push_back(s[c]);
+                        c+=(numRows-1)*2;
+                    }
+                }
+                else{
+                    while(c<s.length()){
+                        if(d%2==0){
+                            ans.push_back(s[c]);
+                            c+=a;
+                            d++;
+                        }
+                        else{
+                            ans.push_back(s[c]);
+                            c+=b;
+                            d++;
+                        }
+                    }
+                    a-=2;
+                    b+=2;
+                }
+            }
+        }
+        return ans;   
+    }
+};
