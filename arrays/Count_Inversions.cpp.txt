@@ -1,0 +1,40 @@
+//https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+
+
+long long merge(long long a[],long long temp[],long long left,long long mid,long long right){
+    long long int i,j,k,inv=0;
+    i=left;
+    j=mid;
+    k=left;
+    while((i<=mid-1)&&(j<=right)){
+        if(a[i]<=a[j]){
+            temp[k++]=a[i++];
+        }else{
+            temp[k++]=a[j++];
+            inv+=(mid-i);
+        }
+    }
+    while(i<=mid-1){
+        temp[k++]=a[i++];    
+}
+while(j<=right){
+    temp[k++]=a[j++];}
+    for(long long m=left;m<=right;m++){
+        a[m]=temp[m];
+    }return inv;
+}
+long long int mergeSort(long long a[],long long temp[],int left,int right){
+    long long int inv=0;
+    if(left<right){
+        int mid=(left+right)/2;
+        inv+=mergeSort(a,temp,left,mid);
+        inv+=mergeSort(a,temp,mid+1,right);
+        inv+=merge(a,temp,left,mid+1,right);
+    }return inv;
+}
+long long int inversionCount(long long a[], long long n)
+{long long temp[n];
+            return  mergeSort(a,temp,0,n-1);
+   
+    // Your Code Here
+}
