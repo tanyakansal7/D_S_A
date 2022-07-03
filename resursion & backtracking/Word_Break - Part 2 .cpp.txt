@@ -1,0 +1,31 @@
+//https://practice.geeksforgeeks.org/problems/word-break-part-23249/1
+
+
+class Solution{
+public:
+    void dfs(string str, map<string,int>&m,vector<string>&v,string temp){
+        if(str.length()==0){
+            temp.pop_back();
+            v.push_back(temp);
+            return;
+        }
+        for(int i=0;i<str.length();i++){
+            string chk = str.substr(0,i+1);
+            if(m[chk]){
+                chk+=' ';
+                dfs(str.substr(i+1), m, v, temp+chk);
+            }
+        }
+    }
+    vector<string> wordBreak(int n, vector<string>& dict, string s)
+    {
+        // code here
+        vector<string> v;
+        map<string,int>m;
+        for(auto i : dict) m[i]++;
+        
+        dfs(s, m, v, "");
+        
+        return v;
+    }
+};
