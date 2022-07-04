@@ -1,0 +1,37 @@
+//https://practice.geeksforgeeks.org/problems/x-xor-a-is-minimum-and-set-bits-in-x-b/1
+
+
+class Solution
+{
+public:
+    int minVal(int a, int b)
+    {
+     
+        int setBitsB = __builtin_popcount(b);
+
+        int ans = 0;
+        for (int i = 31; i >= 0; i--)
+        {
+            int bitofa = (a >> i) & 1;
+            if (bitofa && setBitsB)
+            {
+                ans += (1 << i);
+                setBitsB--;
+            }
+        }
+        
+
+        int i = 0;
+        while (setBitsB && i < 32)
+        {
+            int bitofans = (ans >> i) & 1;
+            if (!bitofans)
+            {
+                ans += (1 <<i);
+                setBitsB--;
+            }
+            i++;
+        }
+        return ans;
+    }
+};
