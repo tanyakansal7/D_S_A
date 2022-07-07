@@ -1,0 +1,23 @@
+//https://practice.geeksforgeeks.org/problems/decode-the-pattern1138/1
+
+
+ string lookandsay(int n) {
+           string t="1";
+       for(int i=0;i<n-1;i++){
+            int m=t.size();
+             string l="";
+           int count=1;
+            for(int j=0;j<m;j++){
+               while(t[j]==t[j+1]){
+                   count++;
+                   j++;
+               }
+               l=l+to_string(count)+t[j];
+                 count=1;
+           }
+             t=l;
+       }
+       return t;
+   
+        // code here
+    }   
