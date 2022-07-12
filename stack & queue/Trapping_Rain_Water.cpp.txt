@@ -1,0 +1,32 @@
+//https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1#
+
+long long trappingWater(int arr[], int n){
+        int maxl[n]={0};
+        int maxr[n]={0};
+        maxl[0]=arr[0];
+        for(int i=1;i<n;i++){
+            if(arr[i]>maxl[i-1])
+            maxl[i]=arr[i];
+            else
+            maxl[i]=maxl[i-1];
+        }
+        
+        maxr[n-1]=arr[n-1];
+        for(int i=n-2;i>=0;i--)
+       {
+           if(arr[i]>maxr[i+1])
+           maxr[i]=arr[i];
+           else
+           maxr[i]=maxr[i+1];
+       }
+        long long sum=0;
+        for(int i=0;i<n;i++)
+        {    if(maxl[i]<maxr[i])
+            sum+=(maxl[i]-arr[i]);
+            else
+            sum+=(maxr[i]-arr[i]);
+        }
+      
+        return sum;
+        // code here
+    }
